@@ -23,30 +23,22 @@ namespace WpfCoreMvvm.ViewModel
 
         protected ICommand GetVmCommand(string propName, Action action)
         {
-            if (commands.TryGetValue(propName, out ICommand command))
-            {
-                return command;
-            }
-            else
+            if (!commands.TryGetValue(propName, out ICommand command))
             {
                 command = new Command(action);
                 commands.Add(propName, command);
-                return command;
             }
+            return command;
         }
 
         protected ICommand GetCommand<T>(string propName, Action<T> action)
         {
-            if (commands.TryGetValue(propName, out ICommand command))
-            {
-                return command;
-            }
-            else
+            if (!commands.TryGetValue(propName, out ICommand command))
             {
                 command = new Command<T>(action);
                 commands.Add(propName, command);
-                return command;
             }
+            return command;
         }
 
         #endregion
