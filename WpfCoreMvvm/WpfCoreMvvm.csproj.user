@@ -7,12 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\Dialogs\DialogMessage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Dialogs\DialogsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\MainView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Dialogs\DialogMessage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Dialogs\DialogResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Dialogs\DialogsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainView.xaml">

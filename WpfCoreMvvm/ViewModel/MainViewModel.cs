@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
+using WpfCoreMvvm.ViewModel.Dialogs;
+using WpfCoreMvvm.ViewModel.Helpers;
 using WpfCoreMvvm.ViewModel.Items;
 
 namespace WpfCoreMvvm.ViewModel
 {
-    public class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseActivityViewModel<Helpers.Activitys.ActivitysCommandWait>
     {
         private int cntTitle = 1;
         private ObservableCollection<IItems> itemsSource = new ObservableCollection<IItems>()
@@ -29,12 +31,13 @@ namespace WpfCoreMvvm.ViewModel
         private string GetTitle(int cnt) => $"Hello World {cnt}";
 
         #region Commands
-        public ICommand IncrementTitleCommand => base.GetVmCommand(nameof(IncrementTitleCommand), IncrementTitleClick);
+        public ICommand IncrementTitleCommand => base.Activitys.Commands.GetCommand(nameof(IncrementTitleCommand), IncrementTitleClick);
 
 
         #region Implementations
-        private void IncrementTitleClick()
+        private async void IncrementTitleClick()
         {
+            await new DialogMessage().Show(new Dialogs.Parametrs.DialogParametrsMessage(cntTitle.ToString()));
             OnPropertyChanged(nameof(Title));
         }
 

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfCoreMvvm"
         xmlns:view="clr-namespace:WpfCoreMvvm.View"
         xmlns:viewModel="clr-namespace:WpfCoreMvvm.ViewModel"
+        xmlns:dialogs="clr-namespace:WpfCoreMvvm.View.Dialogs"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="800">
     <Window.DataContext>
@@ -13,5 +14,7 @@
     </Window.DataContext>
     <Grid>
         <view:MainView/>
+
+        <dialogs:DialogsView/>
     </Grid>
 </Window>
