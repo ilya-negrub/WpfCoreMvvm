@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using WpfCoreMvvm.ViewModel.Dialogs.Parametrs;
 
 namespace WpfCoreMvvm.ViewModel.Dialogs
 {

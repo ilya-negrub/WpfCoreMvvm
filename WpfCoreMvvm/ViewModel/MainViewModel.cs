@@ -37,7 +37,11 @@ namespace WpfCoreMvvm.ViewModel
         #region Implementations
         private async void IncrementTitleClick()
         {
-            await new DialogMessage().Show(new Dialogs.Parametrs.DialogParametrsMessage(cntTitle.ToString()));
+            await base.Activitys.WaitUi.Begin(async () =>
+            {
+                await new DialogMessage().Show(new Dialogs.Parametrs.DialogParametrsMessage(cntTitle.ToString()));
+            });
+
             OnPropertyChanged(nameof(Title));
         }
 

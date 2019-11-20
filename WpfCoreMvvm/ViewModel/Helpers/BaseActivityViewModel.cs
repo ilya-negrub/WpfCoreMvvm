@@ -8,6 +8,6 @@ namespace WpfCoreMvvm.ViewModel.Helpers
     public abstract class BaseActivityViewModel<TActivitys> : BaseViewModel
         where TActivitys : IActivitysViewModel, new()
     {
-        internal TActivitys Activitys { get; } = new TActivitys();
+        public TActivitys Activitys { get; } = new TActivitys();
     }
 }
