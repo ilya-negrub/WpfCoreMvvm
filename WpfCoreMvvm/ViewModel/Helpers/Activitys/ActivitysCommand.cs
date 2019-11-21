@@ -5,8 +5,8 @@ using WpfCoreMvvm.ViewModel.Helpers.Activity;
 
 namespace WpfCoreMvvm.ViewModel.Helpers.Activitys
 {
-    public class ActivitysCommandWait : ActivitysCommand
-    {   
-        public ActivityWaitUi WaitUi { get; } = new ActivityWaitUi();
+    public class ActivitysCommand : IActivitysViewModel
+    {
+        public ActivityCommand Commands { get; } = new ActivityCommand();
     }
 }

@@ -21,10 +21,8 @@ namespace WpfCoreMvvm.ViewModel.Dialogs
     {
         private Action<TResult> trySetResult;
 
-        
-
         private IDialogParametrs parametrs;
-                
+
         public IDialogParametrs Parametrs => parametrs;
         
         public async Task<TResult> Show(TParametrs parametrs)
@@ -42,6 +40,7 @@ namespace WpfCoreMvvm.ViewModel.Dialogs
             OnClose();
             RemoveDialog(this);
         }
+
         protected virtual void OnClose() { }
 
         private Task<TResult> WaitsResponse()
@@ -57,11 +56,11 @@ namespace WpfCoreMvvm.ViewModel.Dialogs
             if (isClose) Close();
         }
 
-
         protected static void AddDialog(BaseDialog<TParametrs, TResult> dialog)
         {
             System.Windows.Application.Current?.Dispatcher?.BeginInvoke(new Action(() => { dialogsSource.Add(dialog); }));
         }
+
         protected static void RemoveDialog(BaseDialog<TParametrs, TResult> dialog)
         {
             System.Windows.Application.Current?.Dispatcher?.BeginInvoke(new Action(() => { dialogsSource.Remove(dialog); }));

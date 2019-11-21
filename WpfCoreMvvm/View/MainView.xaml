@@ -75,21 +75,23 @@
 
 
         <Grid>
-            <Grid Background="Yellow" Opacity="0.3">
-                <Grid.Style>
-                    <Style TargetType="{x:Type Grid}">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Activitys.WaitUi.IsWaiting, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-            </Grid>
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Activitys.WaitUi.IsWaiting, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid Background="Yellow" Opacity="0.3"/>
+
+
             <Label Content="Waiting..."
-                       VerticalAlignment="Center" 
-                       HorizontalAlignment="Center"/>
+                   Margin="0 50"
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Center"/>
         </Grid>
         
     </Grid>

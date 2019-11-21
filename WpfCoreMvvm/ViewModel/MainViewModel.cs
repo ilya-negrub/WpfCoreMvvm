@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 using WpfCoreMvvm.ViewModel.Dialogs;
+using WpfCoreMvvm.ViewModel.Dialogs.Parametrs;
 using WpfCoreMvvm.ViewModel.Helpers;
 using WpfCoreMvvm.ViewModel.Items;
 
@@ -27,7 +28,6 @@ namespace WpfCoreMvvm.ViewModel
         public string Title => GetTitle(cntTitle++);
         public ObservableCollection<IItems> ItemsSource => itemsSource;
 
-
         private string GetTitle(int cnt) => $"Hello World {cnt}";
 
         #region Commands
@@ -37,12 +37,28 @@ namespace WpfCoreMvvm.ViewModel
         #region Implementations
         private async void IncrementTitleClick()
         {
+            ResultDialogMessage result = ResultDialogMessage.Cancel;
+
             await base.Activitys.WaitUi.Begin(async () =>
             {
-                await new DialogMessage().Show(new Dialogs.Parametrs.DialogParametrsMessage(cntTitle.ToString()));
+                result = await new DialogMessage().Show(
+                    new DialogParametrsMessage("DialogMessage", $"Next index: {cntTitle}")
+                    {
+                        Buttons = DialogButtons.Ok | DialogButtons.Cancel,
+                        //CustomButtons = GetCustomButtons()
+                    });
             });
 
-            OnPropertyChanged(nameof(Title));
+            if (result == ResultDialogMessage.Ok)
+            {
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+
+        private IEnumerable<DialogMessageButtons> GetCustomButtons()
+        {
+            yield return new DialogMessageButtons("Custom Ok", () => ResultDialogMessage.Ok);
+            yield return new DialogMessageButtons("Custom Cancel", () => ResultDialogMessage.Cancel);
         }
 
 
