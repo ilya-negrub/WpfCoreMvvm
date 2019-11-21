@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:WpfCoreMvvm"
         xmlns:view="clr-namespace:WpfCoreMvvm.View"
         xmlns:viewModel="clr-namespace:WpfCoreMvvm.ViewModel"
-        xmlns:dialogs="clr-namespace:WpfCoreMvvm.View.Dialogs"
+        xmlns:dialogs="clr-namespace:WpfCoreMvvm.View.Dialogs"        
         xmlns:vm_dialogs="clr-namespace:WpfCoreMvvm.ViewModel.Dialogs"
+        xmlns:notifi="clr-namespace:WpfCoreMvvm.View.Notifications"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="800">
     <Window.DataContext>
@@ -36,5 +37,7 @@
         </view:MainView>
 
         <dialogs:DialogsView/>
+
+        <notifi:NotifiView/>
     </Grid>
 </Window>

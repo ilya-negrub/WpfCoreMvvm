@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:view="clr-namespace:WpfCoreMvvm.View.Notifications"
+                    xmlns:vm="clr-namespace:WpfCoreMvvm.ViewModel.Notifications"
+                    xmlns:local="clr-namespace:WpfCoreMvvm.View.Notifications">
+    
+    <DataTemplate DataType="{x:Type vm:NotificationMessage}">
+        <view:NotificationMessage/>
+    </DataTemplate>
+    
+</ResourceDictionary>

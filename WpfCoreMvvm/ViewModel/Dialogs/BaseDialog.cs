@@ -14,6 +14,16 @@ namespace WpfCoreMvvm.ViewModel.Dialogs
         protected static ObservableCollection<BaseDialog> dialogsSource = new ObservableCollection<BaseDialog>();
 
         public static ObservableCollection<BaseDialog> DialogsSource => dialogsSource;
+
+        protected static void AddDialog(BaseDialog dialog)
+        {
+            System.Windows.Application.Current?.Dispatcher?.BeginInvoke(new Action(() => { dialogsSource.Add(dialog); }));
+        }
+
+        protected static void RemoveDialog(BaseDialog dialog)
+        {
+            System.Windows.Application.Current?.Dispatcher?.BeginInvoke(new Action(() => { dialogsSource.Remove(dialog); }));
+        }
     }
 
     public abstract class BaseDialog<TParametrs, TResult> : BaseDialog
@@ -54,16 +64,6 @@ namespace WpfCoreMvvm.ViewModel.Dialogs
         {
             trySetResult?.Invoke(result);
             if (isClose) Close();
-        }
-
-        protected static void AddDialog(BaseDialog<TParametrs, TResult> dialog)
-        {
-            System.Windows.Application.Current?.Dispatcher?.BeginInvoke(new Action(() => { dialogsSource.Add(dialog); }));
-        }
-
-        protected static void RemoveDialog(BaseDialog<TParametrs, TResult> dialog)
-        {
-            System.Windows.Application.Current?.Dispatcher?.BeginInvoke(new Action(() => { dialogsSource.Remove(dialog); }));
         }
     }
 

@@ -31,7 +31,7 @@
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type vm_items:ItemA2}">
-            <Button Background="Green">
+            <Button Background="Green" Command="{Binding ShowNotifiCommand}">
                 <ContentControl Content="BaseItemA" Template="{StaticResource BaseItemName}"/>
             </Button>
         </DataTemplate>
@@ -43,7 +43,7 @@
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type vm_items:ItemB2}">
-            <Button Background="Yellow">
+            <Button Background="Yellow" Command="{Binding ShowNotifiCommand}">
                 <ContentControl Content="BaseItemB" Template="{StaticResource BaseItemName}"/>
             </Button>
         </DataTemplate>
